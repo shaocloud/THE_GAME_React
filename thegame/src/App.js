@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import functions from './Functions';
+import Voting from './Voting';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Hello World
+        <Voting subtitle="This is the subtitle"/>
       </header>
     </div>
   );

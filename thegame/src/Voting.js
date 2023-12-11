@@ -1,8 +1,8 @@
-import Firebase from "firebase"
+import Firebase from "firebase/compat/app";
 import { useState, useEffect } from "react";
 
 
-function Voting(){
+function Voting(props){
     //Variables
     //displays question
     const [question, setQn] = useState({
@@ -42,28 +42,20 @@ function Voting(){
 
     return (
         <>
-        <h1>{question.text}</h1>
-        <button 
-            type="button"
-            onClick={incrementA}>
-                {question.optionA}
-        </button>
-        <button 
-            type="button"
-            onClick={incrementB}>
-                {question.optionB}
-        </button>
+            <h1>Question: {question.text}</h1>
+            <h3>{props.subtitle}</h3>
+            <button 
+                type="button"
+                onClick={incrementA}>
+                    {question.optionA}
+            </button>
+            <button 
+                type="button"
+                onClick={incrementB}>
+                    {question.optionB}
+            </button>
         </>
     )
 }
 
-writeVote = () => {
-    let ref = Firebase.database().ref('/');
-}
-
-getQuestion = () => {
-    let ref = Firebase.database().ref('/');
-    
-}
-
-export default functions;
+export default Voting;
