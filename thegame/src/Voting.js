@@ -36,6 +36,7 @@ function Voting(props){
             .set(Firebase.database.ServerValue.increment(1));
     }
 
+    //Does something when rendered
     useEffect(() => {
 
     }, [question]);
