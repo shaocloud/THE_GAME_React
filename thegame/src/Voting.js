@@ -1,8 +1,16 @@
-import Firebase from "firebase/compat/app";
+
+import config from "./config.js"
+import { ref, getDatabase, onValue } from "firebase/database";
+import { initializeApp } from 'firebase/app';
+import { useObject } from 'react-firebase-hooks/database';
 import { useState, useEffect } from "react";
 
 
-function Voting(props){
+const app = initializeApp(config);
+const db = getDatabase(app);
+
+function Voting(){
+    const [snapshot, loading, error] = useObject(ref(db, 'question'));
     //Variables
     //displays question
     const [question, setQn] = useState({
@@ -12,48 +20,50 @@ function Voting(props){
         optionB: ""
     });
 
-    const updateText = () => {
+    const updateText = (txt) => {
         setQn(previousState => {
-            return{...previousState, text: "etc"}
+            return{...previousState, text: txt}
         });
     }
 
-    const incrementA = () => {
-        Firebase.database()
-            .ref('question')
+    const incrementA = () => {/*
+        db.ref('question')
             .child(question.id)
             .child('optionA')
             .child('votes')
-            .set(Firebase.database.ServerValue.increment(1));
+            .set(db.ServerValue.increment(1));*/
     }
 
     const incrementB = () => {
-        Firebase.database()
-            .ref('question')
+        /*
+        db.ref('question')
             .child(question.id)
             .child('optionA')
             .child('votes')
-            .set(Firebase.database.ServerValue.increment(1));
+            .set(db.ServerValue.increment(1));*/
     }
 
-    //Does something when rendered
+    function getQuestion(){
+        return 
+    }
+
     useEffect(() => {
 
-    }, [question]);
+    },[])
 
     return (
         <>
-            <h1>Question: {question.text}</h1>
-            <h3>{props.subtitle}</h3>
+        {error && <strong>Error: {error}</strong>}
+        {loading && <span>Value: Loading...</span>}
+        {snapshot && <span>Value: {snapshot.val()["question"]}</span>}
+        <p/>
             <button 
-                type="button"
-                onClick={incrementA}>
-                    {question.optionA}
+                type="button">
+                    {snapshot.val()["optionA"]}
             </button>
             <button 
-                type="button"
-                onClick={incrementB}>
-                    {question.optionB}
+                type="button">
+                    {snapshot.val()["optionB"]}
             </button>
         </>
     )
