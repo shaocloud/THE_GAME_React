@@ -26,22 +26,22 @@ const Voting = () => {
         });
     }
 
-    const updateQuestion = (data) =>
-    {
-        const newQuestionObj = {...questionObj};
-
-        newQuestionObj.question = data.question;
-        newQuestionObj.optionA = data.optionA;
-        newQuestionObj.optionB = data.optionB;
-
-        return setQuestionObj({
-            question: data.question,
-            optionA: data.optionA,
-            optionB: data.optionB
-        })
-    }
-
     useEffect(() => {
+        const updateQuestion = (data) =>
+        {
+            const newQuestionObj = {...questionObj};
+    
+            newQuestionObj.question = data.question;
+            newQuestionObj.optionA = data.optionA;
+            newQuestionObj.optionB = data.optionB;
+    
+            return setQuestionObj({
+                question: data.question,
+                optionA: data.optionA,
+                optionB: data.optionB
+            })
+        }
+
         const query = ref(db, "question");
         return onValue(query, (snapshot)=>{
             const data = snapshot.val();
