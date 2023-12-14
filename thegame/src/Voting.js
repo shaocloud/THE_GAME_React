@@ -1,70 +1,66 @@
-
-import config from "./config.js"
-import { ref, getDatabase, onValue } from "firebase/database";
-import { initializeApp } from 'firebase/app';
-import { useObject } from 'react-firebase-hooks/database';
+import { ref, onValue, increment, update } from "firebase/database";
 import { useState, useEffect } from "react";
+import { db } from "./config.js"
+import OptionButton from "./Button.js";
+import Question from "./Question.js";
 
+// https://stackoverflow.com/questions/70045141/how-to-increment-values-in-firebase-realtime-database-v9
+// https://stackoverflow.com/questions/67312207/how-to-utilize-useeffect-hooks-to-fetch-data-from-firebase-realtime-database
 
-const app = initializeApp(config);
-const db = getDatabase(app);
-
-function Voting(){
-    const [snapshot, loading, error] = useObject(ref(db, 'question'));
+const Voting = () => {
     //Variables
     //displays question
-    const [question, setQn] = useState({
-        id: "",
-        text: "",
-        optionA: "",
-        optionB: ""
-    });
+    const [questionObj, setQuestionObj] = useState({});
 
-    const updateText = (txt) => {
-        setQn(previousState => {
-            return{...previousState, text: txt}
+    async function incrementA()
+    {
+        await update(ref(db,'question'),{
+            votesA: increment(1)
         });
     }
 
-    const incrementA = () => {/*
-        db.ref('question')
-            .child(question.id)
-            .child('optionA')
-            .child('votes')
-            .set(db.ServerValue.increment(1));*/
+    async function incrementB()
+    {
+        await update(ref(db,'question'),{
+            votesB: increment(1)
+        });
     }
 
-    const incrementB = () => {
-        /*
-        db.ref('question')
-            .child(question.id)
-            .child('optionA')
-            .child('votes')
-            .set(db.ServerValue.increment(1));*/
-    }
+    const updateQuestion = (data) =>
+    {
+        const newQuestionObj = {...questionObj};
 
-    function getQuestion(){
-        return 
+        newQuestionObj.question = data.question;
+        newQuestionObj.optionA = data.optionA;
+        newQuestionObj.optionB = data.optionB;
+
+        return setQuestionObj({
+            question: data.question,
+            optionA: data.optionA,
+            optionB: data.optionB
+        })
     }
 
     useEffect(() => {
+        const query = ref(db, "question");
+        return onValue(query, (snapshot)=>{
+            const data = snapshot.val();
+            if(snapshot.exists()){
+                updateQuestion(data);
+            }
+        })
+    }, []);
 
-    },[])
+    useEffect(()=>{
+
+    }, [questionObj])
 
     return (
         <>
-        {error && <strong>Error: {error}</strong>}
-        {loading && <span>Value: Loading...</span>}
-        {snapshot && <span>Value: {snapshot.val()["question"]}</span>}
+        <Question text={questionObj.question}/>
         <p/>
-            <button 
-                type="button">
-                    {snapshot.val()["optionA"]}
-            </button>
-            <button 
-                type="button">
-                    {snapshot.val()["optionB"]}
-            </button>
+        <OptionButton action={incrementA} text={questionObj.optionA}/>
+        <OptionButton action={incrementB} text={questionObj.optionB}/>
         </>
     )
 }
