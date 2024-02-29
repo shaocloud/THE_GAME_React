@@ -12,7 +12,9 @@ function GameState()
         1: "WAITING FOR QN",
         2: "QUESTION READY",
         3: "VOTING",
-        4: "RESULTS"
+        4: "RESULTS",
+        5: "INTRO",
+        6: "ENDING"
     }
 
     function convertToState(i)
