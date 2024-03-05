@@ -24,22 +24,22 @@ const Naming = () => {
 
     return (
         <>
-        {!this.state.done &&(
-            <form method="post" onSubmit={submitName}>
-                <label>
-                    <Question text="What's your name?"/>
-                    <p/>
-                    <input name="nameInput"/>
-                </label>
-                <button type="submit">Submit</button>
-            </form>
-        )        
-        }
-        {this.state.done &&(
-            <h2>
-                YOU SUBMITTED: {nameSub}!
-            </h2>
-        )}
+            {!done &&(
+                <form method="post" onSubmit={submitName}>
+                    <label>
+                        <Question text="What's your name?"/>
+                        <p/>
+                        <input name="nameInput"/>
+                    </label>
+                    <button type="submit">Submit</button>
+                </form>
+            )        
+            }
+            {done &&(
+                <h2>
+                    YOU SUBMITTED: {nameSub}!
+                </h2>
+            )}
         </>
     )
 }
