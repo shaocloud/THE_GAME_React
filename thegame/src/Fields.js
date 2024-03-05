@@ -16,8 +16,7 @@ function Title(val)
 export default function Fields(props)
 {
     let val = props.stateVal;
-    console.log(props);
-    console.log(val);
+    
     switch(val)
     {
         case 5:
