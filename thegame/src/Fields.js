@@ -3,33 +3,57 @@ import Naming from './Naming';
 import Skipping from './Skipping';
 import IntroText from "./Intro.js";
 
+function Title()
+{
+    return(
+        <>
+        <h2>FIELD GOES HERE</h2>
+        </>
+    )
+}
+
 export default function Fields(props)
 {
-    switch(props)
+    let val = props.stateVal;
+    switch(val)
     {
         case 5:
             return(
-                <IntroText/>
+                <>
+                    <Title/>
+                    <IntroText/>
+                </>
             );
             break;
         case 3:
             return(
-                <Voting/>
+                <>
+                    <Title/>
+                    <Voting/>
+                </>
             );
             break;
         case 7:
             return(
-                <Naming/>
+                <>
+                    <Title/>
+                    <Naming/>
+                </>
             );
             break;
         case 8:
             return(
-                <Skipping/>
+                <>
+                    <Title/>
+                    <Skipping/>
+                </>
             );
             break;
         default:
             return(
-                <></>
+                <>
+                    <Title/>
+                </>
             )
             break;
     }

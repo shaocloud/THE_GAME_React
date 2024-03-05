@@ -32,7 +32,7 @@ function GameState()
             {!loading && snapshots &&(
                 <>
                 <h2>Status: {convertToState(snapshots[0].val())}</h2>
-                <Fields props={snapshots[0].val}/>
+                <Fields key={snapshots[0].val} stateVal={snapshots[0].val}/>
                 </>
             ) }
         </div>
