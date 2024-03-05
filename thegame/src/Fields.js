@@ -3,12 +3,14 @@ import Naming from './Naming';
 import Skipping from './Skipping';
 import IntroText from "./Intro.js";
 
-function Title(val)
+function Title(props)
 {
+    console.log("Title " + props.val);
+
     return(
         <>
         <h2>FIELD GOES HERE</h2>
-        <h3>{val}</h3>
+        <h3>{props.val}</h3>
         </>
     )
 }
@@ -16,13 +18,15 @@ function Title(val)
 export default function Fields(props)
 {
     let val = props.stateVal;
-    
+
+    console.log("Fields " + val);
+
     switch(val)
     {
         case 5:
             return(
                 <>
-                    <Title/>
+                    <Title val={val}/>
                     <IntroText/>
                 </>
             );
@@ -30,7 +34,7 @@ export default function Fields(props)
         case 3:
             return(
                 <>
-                    <Title/>
+                    <Title val={val}/>
                     <Voting/>
                 </>
             );
@@ -38,7 +42,7 @@ export default function Fields(props)
         case 7:
             return(
                 <>
-                    <Title/>
+                    <Title val={val}/>
                     <Naming/>
                 </>
             );
@@ -46,7 +50,7 @@ export default function Fields(props)
         case 8:
             return(
                 <>
-                    <Title/>
+                    <Title val={val}/>
                     <Skipping/>
                 </>
             );
@@ -54,7 +58,7 @@ export default function Fields(props)
         default:
             return(
                 <>
-                    <Title/>
+                    <Title val={val}/>
                 </>
             )
             break;

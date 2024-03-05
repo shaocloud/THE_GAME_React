@@ -24,7 +24,7 @@ function GameState()
     {
         return dict[i];
     }
-
+    
     return (
         <div>
             {error && <strong>Error: {error}</strong>}
