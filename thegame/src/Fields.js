@@ -3,11 +3,12 @@ import Naming from './Naming';
 import Skipping from './Skipping';
 import IntroText from "./Intro.js";
 
-function Title()
+function Title(val)
 {
     return(
         <>
         <h2>FIELD GOES HERE</h2>
+        <h3>{val}</h3>
         </>
     )
 }
@@ -15,6 +16,8 @@ function Title()
 export default function Fields(props)
 {
     let val = props.stateVal;
+    console.log(props);
+    console.log(val);
     switch(val)
     {
         case 5:
