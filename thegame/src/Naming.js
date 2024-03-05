@@ -1,15 +1,11 @@
 import { ref, onValue, push, set } from "firebase/database";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { db } from "./config.js"
-import OptionButton from "./Button.js";
 import Question from "./Question.js";
 
-// https://stackoverflow.com/questions/70045141/how-to-increment-values-in-firebase-realtime-database-v9
-// https://stackoverflow.com/questions/67312207/how-to-utilize-useeffect-hooks-to-fetch-data-from-firebase-realtime-database
-
 const Naming = () => {
-    //Variables
-    //displays question
+    const[done, setDone] = useState(false);
+    const[nameSub, setName] = useState("");
 
     function submitName(e)
     {
@@ -22,18 +18,28 @@ const Naming = () => {
         const newNameRef = push(nameListRef);
         set(newNameRef, name);
         console.log(name + " submitted!");
+        setDone(true);
+        setName(name);
     }
 
     return (
         <>
-        <form method="post" onSubmit={submitName}>
-            <label>
-                <Question text="What's your name?"/>
-                <p/>
-                <input name="nameInput"/>
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+        {!this.state.done &&(
+            <form method="post" onSubmit={submitName}>
+                <label>
+                    <Question text="What's your name?"/>
+                    <p/>
+                    <input name="nameInput"/>
+                </label>
+                <button type="submit">Submit</button>
+            </form>
+        )        
+        }
+        {this.state.done &&(
+            <h2>
+                YOU SUBMITTED: {nameSub}!
+            </h2>
+        )}
         </>
     )
 }
