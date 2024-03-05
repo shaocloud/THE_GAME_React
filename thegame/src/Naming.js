@@ -16,7 +16,7 @@ const Naming = () => {
         e.preventDefault();
         const form = e.target;
         const nameData = new FormData(form);
-        const name = nameData.get(nameInput);
+        const name = nameData.get("nameInput");
 
         const nameListRef = ref(db,"names");
         const newNameRef = push(nameListRef);
