@@ -3,7 +3,7 @@ import { db } from "./config.js"
 import { initializeApp } from 'firebase/app';
 import { useList } from 'react-firebase-hooks/database';
 import { ref, getDatabase, onValue } from "firebase/database";
-import IntroText from "./Intro.js";
+import Fields from './Fields';
 
 function GameState()
 {
@@ -15,7 +15,9 @@ function GameState()
         3: "VOTING",
         4: "RESULTS",
         5: "INTRO",
-        6: "ENDING"
+        6: "ENDING",
+        7: "NAMING",
+        8: "SKIP"
     }
 
     function convertToState(i)
@@ -27,12 +29,10 @@ function GameState()
         <div>
             {error && <strong>Error: {error}</strong>}
             {loading && <strong>Loading status...</strong>}
-            {!loading && snapshots && (snapshots[0].val() == 5) &&(
-                <IntroText/>
-            ) }
             {!loading && snapshots &&(
                 <h2>Status: {convertToState(snapshots[0].val())}</h2>
             ) }
+            <Fields props={snapshots[0].val}/>
         </div>
     )
 }
