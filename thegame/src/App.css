@@ -14,14 +14,19 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
+  text-shadow: 2px 2px #ffffff;
+}
+
+.Question{
+  max-width: 90%;
+  margin: auto;
 }
 
 .App-link {
@@ -34,5 +39,48 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.VoteBtn{
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 32px 32px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  font-family: "Upheaval";
+  text-shadow: 2px 2px #444;
+  width: 90%;
+  height: fit-content;
+  box-shadow: inset 0.2em 0.2em 0 rgba(255,255,255,0.5), inset -0.2em -0.2em 0 rgba(0,0,0,0.5);
+}
+
+.VoteBtn:focus{
+  transform:scale(0.98);
+  box-shadow: 3px 2px rgba(0, 0, 0, 0.24);
+  background-color: #049962; /* Green */
+  color: #AAA;
+  text-shadow: -2px -2px #444;
+  
+}
+
+body{
+  background: url("./assets/bg_Tile.png") center/20% repeat;
+  -webkit-animation: scrolling 45s linear infinite;
+  -moz-animation: scrolling 45s linear infinite;
+  -o-animation: scrolling 45s linear infinite;
+  animation: scrolling 45s linear infinite;
+}
+
+@keyframes scrolling{
+  from{
+    background-position: 0 0;
+  }
+  to{
+    background-position: 100% 100%;
   }
 }

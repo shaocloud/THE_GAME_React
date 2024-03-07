@@ -61,8 +61,9 @@ const Voting = () => {
         <>
         <Question text={questionObj.question}/>
         <p/>
-        <OptionButton action={incrementA} text={questionObj.optionA}/>
-        <OptionButton action={incrementB} text={questionObj.optionB}/>
+        <button className="VoteBtn" onClick={incrementA}>{questionObj.optionA}</button>
+        <br/>
+        <button className="VoteBtn" onClick={incrementB}>{questionObj.optionB}</button>
         </>
     )
 }
