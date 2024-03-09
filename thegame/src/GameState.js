@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import { db } from "./config.js"
-import { initializeApp } from 'firebase/app';
 import { useList } from 'react-firebase-hooks/database';
-import { ref, getDatabase, onValue } from "firebase/database";
+import { ref } from "firebase/database";
 import Fields from './Fields';
 
 function GameState()

@@ -16,26 +16,21 @@ export default function Fields(props)
             return(
                 <IntroText/>
             );
-            break;
         case 3:
             return(
                 <Voting/>
             );
-            break;
         case 7:
             return(
                 <Naming/>
             );
-            break;
         case 8:
             return(
                 <Skipping/>
             );
-            break;
         default:
             return(
                 <></>
             )
-            break;
     }
 }

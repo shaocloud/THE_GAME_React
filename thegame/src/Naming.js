@@ -1,4 +1,4 @@
-import { ref, onValue, push, set } from "firebase/database";
+import { ref, push, set } from "firebase/database";
 import { useState } from "react";
 import { db } from "./config.js"
 import Question from "./Question.js";
@@ -31,7 +31,8 @@ const Naming = () => {
                         <p/>
                         <input name="nameInput"/>
                     </label>
-                    <button type="submit">Submit</button>
+                    <p/>
+                    <button className="VoteBtn" type="submit">Submit</button>
                 </form>
             )        
             }

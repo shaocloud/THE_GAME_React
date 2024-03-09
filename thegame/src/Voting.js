@@ -1,7 +1,6 @@
 import { ref, onValue, increment, update } from "firebase/database";
 import { useState, useEffect } from "react";
 import { db } from "./config.js"
-import OptionButton from "./Button.js";
 import Question from "./Question.js";
 
 // https://stackoverflow.com/questions/70045141/how-to-increment-values-in-firebase-realtime-database-v9
