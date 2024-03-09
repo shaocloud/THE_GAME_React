@@ -36,9 +36,12 @@ const Naming = () => {
             )        
             }
             {done &&(
-                <h2>
-                    YOU SUBMITTED: {nameSub}!
-                </h2>
+                <>
+                    <div>YOU SUBMITTED:</div>
+                    <div className="NameSub">
+                        {nameSub}!
+                    </div>
+                </>
             )}
         </>
     )
