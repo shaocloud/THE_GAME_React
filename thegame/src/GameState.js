@@ -29,7 +29,6 @@ function GameState()
             {loading && <strong>Loading status...</strong>}
             {!loading && snapshots &&(
                 <>
-                <h2>{convertToState(snapshots[0].val())}</h2>
                 <Fields stateVal={snapshots[0].val()}/>
                 </>
             ) }
