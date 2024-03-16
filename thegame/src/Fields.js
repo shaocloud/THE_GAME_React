@@ -2,6 +2,7 @@ import Voting from './Voting';
 import Naming from './Naming';
 import Skipping from './Skipping';
 import IntroText from "./Intro.js";
+import RewindText from './Rewind.js';
 
 
 export default function Fields(props)
@@ -62,6 +63,10 @@ export default function Fields(props)
             return(
                 <Skipping/>
             );
+        case 9:
+            return(
+                <RewindText/>
+            )
         default:
             return(
                 <></>

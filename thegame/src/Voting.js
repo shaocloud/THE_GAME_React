@@ -63,6 +63,9 @@ const Voting = () => {
         <button className="VoteBtn" onClick={incrementA}>{questionObj.optionA}</button>
         <br/>
         <button className="VoteBtn" onClick={incrementB}>{questionObj.optionB}</button>
+        <div>
+            Smash those buttons!
+        </div>
         </>
     )
 }

@@ -89,3 +89,8 @@ body{
   font-size: calc(20px + 2vmin);
 
 }
+
+.LockedChoices{
+  background-color: rgba(0,0,0,0.5);
+  padding: 10%;
+}
